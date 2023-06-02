@@ -17,6 +17,8 @@ public class CustomUserController {
     @Autowired
     private UserRepository userRepository;
 
+    // This works.
+    // curl -i -X POST -H "Content-Type:application/json" -d '{"name": "Andy Thomas", "employmentType": "http://localhost:8080/employmentTypes/1"}' http://localhost:8080/users/createUserWithEmploymentType
     @PostMapping(path = "/users/createUserWithEmploymentType")
     public @ResponseBody String  createUserWithEmploymentType(@RequestBody EntityModel<User> user) {
         System.out.println(user);
@@ -24,6 +26,7 @@ public class CustomUserController {
         return "SUCCESS";
     }
 
+    // This fails.
     // curl -i -X POST -H "Content-Type:application/json" -d '[{"name": "Tom Cady", "skills": ["http://localhost:8080/skills/1", "http://localhost:8080/skills/2"]}]' http://localhost:8080/users/createUserWithSkillBatch    
     @PostMapping(path = "/users/createUserWithSkillBatch")
     public @ResponseBody String  createUserWithSkillBatch(@RequestBody CollectionModel<User> users) {
