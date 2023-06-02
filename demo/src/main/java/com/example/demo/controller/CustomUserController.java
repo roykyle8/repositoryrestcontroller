@@ -24,11 +24,11 @@ public class CustomUserController {
         return "SUCCESS";
     }
 
-    @PostMapping(path = "/users/createUserWithSkill")
-    public @ResponseBody String  createUserWithSkill(@RequestBody CollectionModel<User> user) {
-        System.out.println(user);
+    // curl -i -X POST -H "Content-Type:application/json" -d '[{"name": "Tom Cady", "skills": ["http://localhost:8080/skills/1", "http://localhost:8080/skills/2"]}]' http://localhost:8080/users/createUserWithSkillBatch    
+    @PostMapping(path = "/users/createUserWithSkillBatch")
+    public @ResponseBody String  createUserWithSkillBatch(@RequestBody CollectionModel<User> users) {
+        System.out.println(users);
         // ....
         return "SUCCESS";
     }
-
 }
